@@ -8,8 +8,8 @@
         {
             "name": "PlatformIO",
             "includePath": [
-                "C:/Users/eskil/Documents/PlatformIO/Projects/Hackathon_2024/include",
-                "C:/Users/eskil/Documents/PlatformIO/Projects/Hackathon_2024/src",
+                "C:/Users/eskil/Documents/IES-Hackaton-2024-Gruppe2/dispenser/include",
+                "C:/Users/eskil/Documents/IES-Hackaton-2024-Gruppe2/dispenser/src",
                 "C:/Users/eskil/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/newlib/platform_include",
                 "C:/Users/eskil/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/freertos/include",
                 "C:/Users/eskil/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/freertos/include/esp_additions/freertos",
@@ -240,8 +240,8 @@
             "browse": {
                 "limitSymbolsToIncludedHeaders": true,
                 "path": [
-                    "C:/Users/eskil/Documents/PlatformIO/Projects/Hackathon_2024/include",
-                    "C:/Users/eskil/Documents/PlatformIO/Projects/Hackathon_2024/src",
+                    "C:/Users/eskil/Documents/IES-Hackaton-2024-Gruppe2/dispenser/include",
+                    "C:/Users/eskil/Documents/IES-Hackaton-2024-Gruppe2/dispenser/src",
                     "C:/Users/eskil/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/newlib/platform_include",
                     "C:/Users/eskil/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/freertos/include",
                     "C:/Users/eskil/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/freertos/include/esp_additions/freertos",
