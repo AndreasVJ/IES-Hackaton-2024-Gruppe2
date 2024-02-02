@@ -1,0 +1,3 @@
+[submodule "dispenser/lib/MFRC522"]
+	path = dispenser/lib/MFRC522
+	url = https://github.com/miguelbalboa/rfid
