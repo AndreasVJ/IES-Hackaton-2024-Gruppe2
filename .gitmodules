@@ -1,3 +1,6 @@
 [submodule "dispenser/lib/MFRC522"]
 	path = dispenser/lib/MFRC522
 	url = https://github.com/miguelbalboa/rfid
+[submodule "despenser/lib/MFRC522"]
+	path = despenser/lib/MFRC522
+	url = https://github.com/miguelbalboa/rfid
