@@ -16,10 +16,7 @@ void OldPerson::oldInit(){
     FirebaseData fbdo;
     FirebaseAuth auth;
     FirebaseConfig config;
-
     int count = 0;
-    bool signupOK = false;
-
     Serial.begin(115200);
   WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
   Serial.print("Connecting to Wi-Fi");
@@ -51,20 +48,22 @@ void OldPerson::oldInit(){
   Firebase.reconnectWiFi(true);
 }
 
-String OldPerson::GetDrugs(String uid, bool signupOK){
+String OldPerson::GetDrugs(String uid){
   String path = uid;
   path += "/String";
   String numDrugs;
   String DrugAddr;
 if (Firebase.ready() && signupOK) {
-    if (Firebase.RTDB.getInt(&fbdo, "/test/int")) {
-      if (fbdo.dataType() == "int") {
+    if (Firebase.RTDB.getString(&fbdo, path)) {
+      if (fbdo.dataType() == "String") {
         numDrugs = fbdo.intData();
         Serial.println(numDrugs);
+        return numDrugs;
       }
     }
     else {
       Serial.println(fbdo.errorReason());
     }
+}
 }
 
