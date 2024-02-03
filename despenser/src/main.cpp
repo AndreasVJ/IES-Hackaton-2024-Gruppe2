@@ -25,7 +25,7 @@ void setup() {
   // put your setup code here, to run once:
   id_scanner = new RFID_ID_Scanner();
 
-  drugfetcher = new Old("AndreasVJ iPhone", "12345679", "AIzaSyBMdIr9yelGR95c8WQnh93mpVvEY9NRrss", "URL");
+  drugfetcher = new Old("AndreasVJ iPhone", "12345679", "AIzaSyBMdIr9yelGR95c8WQnh93mpVvEY9NRrss");
 }
 
 bool hasWritten = false;
@@ -33,11 +33,15 @@ bool hasWritten = false;
 void loop() {
   // put your main code here, to run repeatedly:
   String scanned_id = id_scanner->Scan();
+  Serial.println(scanned_id);
+
   // Serial.print(scanned_id);
   if (hasWritten == false) {
-    drugfetcher->GetDrugs("1234");
+    drugfetcher->GetDrugs("12345");
     hasWritten = true;
   }
+
+  delay(500);
 }
 
 
