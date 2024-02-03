@@ -31,6 +31,7 @@ bool hasWritten = false;
 
 void setup() {
   Serial.begin(9600);
+  Serial.print("Starting RFID\n");
 
   // put your setup code here, to run once:
   id_scanner = new RFID_ID_Scanner();
