@@ -35,7 +35,7 @@ void loop() {
   String scanned_id = id_scanner->Scan();
   // Serial.print(scanned_id);
   if (hasWritten == false) {
-    Oldperson.GetDrugs("1234");
+    drugfetcher->GetDrugs("1234");
     hasWritten = true;
   }
 }

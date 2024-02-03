@@ -30,6 +30,7 @@ RFID_ID_Scanner::RFID_ID_Scanner() {
     Serial.println(F("This code scan the MIFARE Classsic NUID."));
     Serial.print(F("Using the following key:"));
     printHex(key.keyByte, MFRC522::MF_KEY_SIZE);
+    Serial.print("\n");
 }
 
 String RFID_ID_Scanner::Scan() {

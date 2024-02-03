@@ -5,7 +5,6 @@
 
 class Old{
     public:
-        bool signupOK = false;
         String WIFI_SSID;
         String WIFI_PASSWORD;
         String API_KEY;

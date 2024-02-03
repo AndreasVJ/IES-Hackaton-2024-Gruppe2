@@ -1,16 +1,14 @@
 #include "Old.h"
 #include "Arduino.h"
 #include "Firebase.h"
-#include <NTPClient.h>
-#include "addons/TokenHelper.h"
-#include "addons/RTDBHelper.h"
 #include "WiFi.h"
 
 Old::Old(String SSID, String Password,String key, String url) {
-    String WIFI_SSID = SSID;
-    String WIFI_PASSWORD = Password;
-    String API_KEY = key;
-    String DATABASE_URL = url;
+    WIFI_SSID = SSID;
+    WIFI_PASSWORD = Password;
+    API_KEY = key;
+    DATABASE_URL = url;
+    oldInit();
 }
 
 void Old::oldInit(){
@@ -18,10 +16,11 @@ void Old::oldInit(){
   FirebaseAuth auth;
   FirebaseConfig config;
   int count = 0;
-  Serial.begin(115200);
 
+  Serial.print("Connecting to Wi-Fi:\n");
+  Serial.print(WIFI_SSID);
+  Serial.print(WIFI_PASSWORD);
   WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
-  Serial.print("Connecting to Wi-Fi");
   while (WiFi.status() != WL_CONNECTED){
     Serial.print(".");
     delay(300);
@@ -34,28 +33,26 @@ void Old::oldInit(){
 
   /* Assign the api key (required) */
   config.api_key = API_KEY;
+  
+  auth.user.email = "gamlis@uid.com";
+  auth.user.password = "gamlis";
 
-  /* Assign the RTDB URL (required) */
-  config.database_url = DATABASE_URL;
+  Firebase.reconnectNetwork(true);
 
-  /* Sign up */
-  if (Firebase.signUp(&config, &auth, "", "")){
-    Serial.println("ok");
-    signupOK = true;
-  }
-  else{
-    Serial.printf("%s\n", config.signer.signupError.message.c_str());
-  }
-  config.token_status_callback = tokenStatusCallback; //see addons/TokenHelper.h
+  fbdo.setBSSLBufferSize(4096, 1024);
+  fbdo.setResponseSize(2048);
+
   Firebase.begin(&config, &auth);
-  Firebase.reconnectWiFi(true);
 }
 
 String Old::GetDrugs(String uid){
+  Serial.print("Getting drugs\n");
+
   String documentPath = "test/" + uid;
   String numDrugs;
   String DrugAddr;
-  if (Firebase.ready() && signupOK) {
+  if (Firebase.ready()) {
+      Serial.print("Firebase ready\n");
       FirebaseJson content;
       String dataPath = "fields/time/integerValue";
       content.set(dataPath, 123);
