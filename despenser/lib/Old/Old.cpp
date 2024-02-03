@@ -52,7 +52,6 @@ String Old::GetDrugs(String uid){
   String path = uid;
   path += "/String";
   String numDrugs;
-  String DrugAddr;
 if (Firebase.ready() && signupOK) {
     if (Firebase.RTDB.getString(&fbdo, path)) {
       if (fbdo.dataType() == "String") {

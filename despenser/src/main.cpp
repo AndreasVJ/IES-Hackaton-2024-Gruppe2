@@ -16,7 +16,7 @@
 
 RFID_ID_Scanner* id_scanner;
 Adafruit_ST7789 tft = Adafruit_ST7789(TFT_CS, TFT_DC, TFT_MOSI, TFT_SCLK, TFT_RST);
-Old Oldperson("SSID", "Password", "key", "URL");
+Old Oldperson("SSID", "Password", "key", "URL"); // Dette må settes inn!!
 
 
 void setup() {
