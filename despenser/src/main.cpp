@@ -1,5 +1,8 @@
 #include <Arduino.h>
 #include "rfid_id.h"
+#include "addons/TokenHelper.h"
+#include "addons/RTDBHelper.h"
+#include "Firebase.h"
 
 RFID_ID_Scanner* id_scanner;
 
