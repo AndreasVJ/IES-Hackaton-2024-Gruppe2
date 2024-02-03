@@ -54,7 +54,8 @@ String Old::GetDrugs(String uid){
   String numDrugs;
   String DrugAddr;
 
-  String documentPath = "test/" + String(uid);
+  String documentPath = "test/";
+  documentPath += String(uid);
 
   Serial.print("Getting drugs\n");
   if (Firebase.ready()) {
@@ -75,4 +76,5 @@ String Old::GetDrugs(String uid){
 
   return "test";
 }
+
 
