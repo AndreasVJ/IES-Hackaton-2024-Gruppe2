@@ -2,12 +2,6 @@
 #include "rfid_id.h"
 #include "addons/TokenHelper.h"
 #include "addons/RTDBHelper.h"
-<<<<<<< HEAD
-#include <WiFi.h>
-#include <Firebase.h>
-#include <NTPClient.h>
-=======
->>>>>>> f006732bbb169155430e777027b63be4d7e9ca5a
 #include <Adafruit_GFX.h>    // Core graphics library
 #include <Adafruit_ST7789.h> 
 #include "Old.h"
@@ -41,7 +35,7 @@ void loop() {
   String scanned_id = id_scanner->Scan();
   // Serial.print(scanned_id);
   if (hasWritten == false) {
-    // Oldperson.GetDrugs("1234");
+    Oldperson.GetDrugs("1234");
     hasWritten = true;
   }
 }
