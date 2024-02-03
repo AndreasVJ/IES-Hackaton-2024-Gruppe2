@@ -1,6 +1,7 @@
 #include "Old.h"
 #include "Arduino.h"
 #include "Firebase.h"
+#include <NTPClient.h>
 #include "addons/TokenHelper.h"
 #include "addons/RTDBHelper.h"
 #include "WiFi.h"

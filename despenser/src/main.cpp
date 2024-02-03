@@ -2,9 +2,6 @@
 #include "rfid_id.h"
 #include "addons/TokenHelper.h"
 #include "addons/RTDBHelper.h"
-#include <WiFi.h>
-#include <Firebase_ESP_Client.h>
-#include <NTPClient.h>
 #include <Adafruit_GFX.h>    // Core graphics library
 #include <Adafruit_ST7789.h> 
 #include "Old.h"
@@ -27,7 +24,7 @@ void setup() {
   // put your setup code here, to run once:
   id_scanner = new RFID_ID_Scanner();
 
-  drugfetcher = new Old("SSID", "Password", "key", "URL");
+  drugfetcher = new Old("AndreasVJ iPhone", "12345679", "AIzaSyBMdIr9yelGR95c8WQnh93mpVvEY9NRrss", "URL");
 }
 
 void loop() {
