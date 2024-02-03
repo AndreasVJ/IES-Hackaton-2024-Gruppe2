@@ -53,7 +53,7 @@ OldPerson::oldInit(String SSID, String Password,String key, String url){
   Firebase.reconnectWiFi(true);
 }
 
-OldPerson::GetDrugs(String uid, bool signupOK){
+String OldPerson::GetDrugs(String uid, bool signupOK){
 if (Firebase.ready() && signupOK) {
     if (Firebase.RTDB.getInt(&fbdo, "/test/int")) {
       if (fbdo.dataType() == "int") {
