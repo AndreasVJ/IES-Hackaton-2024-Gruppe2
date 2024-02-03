@@ -45,7 +45,3 @@ void loop() {
 
   delay(500);
 }
-
-
-
-
