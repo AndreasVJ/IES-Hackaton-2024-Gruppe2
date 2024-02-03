@@ -5,14 +5,14 @@
 #include "addons/RTDBHelper.h"
 #include "WiFi.h"
 
-OldPerson::OldPerson(String SSID, String Password,String key, String url){
+Old::Old(String SSID, String Password,String key, String url){
     String WIFI_SSID = SSID;
     String WIFI_PASSWORD = Password;
     String API_KEY = key;
     String DATABASE_URL = url;
 }
 
-void OldPerson::oldInit(){
+void Old::oldInit(){
     FirebaseData fbdo;
     FirebaseAuth auth;
     FirebaseConfig config;
@@ -48,7 +48,7 @@ void OldPerson::oldInit(){
   Firebase.reconnectWiFi(true);
 }
 
-String OldPerson::GetDrugs(String uid){
+String Old::GetDrugs(String uid){
   String path = uid;
   path += "/String";
   String numDrugs;

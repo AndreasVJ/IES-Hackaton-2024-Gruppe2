@@ -3,7 +3,7 @@
 #include "Firebase.h"
 
 
-class OldPerson{
+class Old{
     public:
         bool signupOK = false;
         String WIFI_SSID;
@@ -13,7 +13,7 @@ class OldPerson{
         FirebaseData fbdo;
         FirebaseAuth auth;
         FirebaseConfig config;
-        OldPerson(String SSID, String Password,String key, String url);
+        Old(String SSID, String Password,String key, String url);
         void oldInit();
         String GetDrugs(String uid);
 };

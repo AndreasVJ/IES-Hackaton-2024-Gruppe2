@@ -1,4 +1,6 @@
 #include "Skjerm_kok.h"
+#include <Adafruit_GFX.h>    // Core graphics library
+#include <Adafruit_ST7789.h>
 
 
 void testlines(uint16_t color) {
