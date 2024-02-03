@@ -32,8 +32,6 @@ Old::Old(String SSID, String Password, String key) {
     Serial.println(WiFi.localIP());
     Serial.println();
 
-    Serial.println(API_KEY);
-
     /* Assign the api key (required) */
     config->api_key = API_KEY;
     
@@ -60,16 +58,11 @@ String Old::GetDrugs(String uid){
   if (Firebase.ready()) {
       Serial.print("Firebase ready\n");
       
-      FirebaseJson content;
-      String dataPath = "fields/time/integerValue";
-      
-      content.set(dataPath, 123);
-
-      if (Firebase.Firestore.createDocument(fbdo, "ies-hackaton-2024-gruppe2", "", documentPath.c_str(), content.raw()))
-        Serial.println("Data uploaded successfully");
+      String mask = "test";
+      if (Firebase.Firestore.getDocument(fbdo, "ies-hackaton-2024-gruppe2", "", documentPath.c_str(), mask.c_str()))
+            Serial.printf("ok\n%s\n\n", fbdo->payload().c_str());
       else
-        Serial.println("Failed to upload data");
-      
+            Serial.println(fbdo->errorReason());
   }
   Serial.print("Got dem drugs...\n");
 

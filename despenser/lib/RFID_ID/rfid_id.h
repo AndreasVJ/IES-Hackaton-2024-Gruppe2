@@ -18,6 +18,8 @@ public:
 
     void printDec(byte *buffer, byte bufferSize);
 
+    String byteToString(byte* buffer, byte bufferSize);
+
 private:
     MFRC522* rfid;
     MFRC522::MIFARE_Key key;
