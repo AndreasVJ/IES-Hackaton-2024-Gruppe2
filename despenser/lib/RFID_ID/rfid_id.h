@@ -5,8 +5,8 @@
 #include <MFRC522.h>
 #include <Arduino.h>
 
-#define SS_PIN 5
-#define RST_PIN 0
+#define SS_PIN 21
+#define RST_PIN 2
 
 class RFID_ID_Scanner {
 public:
@@ -15,6 +15,8 @@ public:
     String Scan();
 
     void printHex(byte *buffer, byte bufferSize);
+
+    void printDec(byte *buffer, byte bufferSize);
 
 private:
     MFRC522* rfid;
