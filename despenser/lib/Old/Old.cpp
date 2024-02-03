@@ -5,23 +5,18 @@
 #include "addons/RTDBHelper.h"
 #include "WiFi.h"
 
-OldPerson::OldPerson(String input_name, int input_address){
-    name = input_name;
-    adress = input_address;
+Old::Old(String SSID, String Password,String key, String url){
+    String WIFI_SSID = SSID;
+    String WIFI_PASSWORD = Password;
+    String API_KEY = key;
+    String DATABASE_URL = url;
 }
 
-OldPerson::oldInit(String SSID, String Password,String key, String url){
-    #define WIFI_SSID SSID
-    #define WIFI_PASSWORD Password
-    #define API_KEY key
-    #define DATABASE_URL url
+void Old::oldInit(){
     FirebaseData fbdo;
     FirebaseAuth auth;
     FirebaseConfig config;
-
     int count = 0;
-    bool signupOK = false;
-
     Serial.begin(115200);
   WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
   Serial.print("Connecting to Wi-Fi");
@@ -53,21 +48,22 @@ OldPerson::oldInit(String SSID, String Password,String key, String url){
   Firebase.reconnectWiFi(true);
 }
 
-OldPerson::GetDrugs(String uid, bool signupOK){
+String Old::GetDrugs(String uid){
+  String path = uid;
+  path += "/String";
+  String numDrugs;
+  String DrugAddr;
 if (Firebase.ready() && signupOK) {
-    if (Firebase.RTDB.getInt(&fbdo, "/test/int")) {
-      if (fbdo.dataType() == "int") {
-        intValue = fbdo.intData();
-        Serial.println(intValue);
+    if (Firebase.RTDB.getString(&fbdo, path)) {
+      if (fbdo.dataType() == "String") {
+        numDrugs = fbdo.intData();
+        Serial.println(numDrugs);
+        return numDrugs;
       }
     }
     else {
       Serial.println(fbdo.errorReason());
     }
-
-
-
-
-
+}
 }
 

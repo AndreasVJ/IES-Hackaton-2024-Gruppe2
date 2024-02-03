@@ -1,14 +1,20 @@
 #pragma once
 #include "Arduino.h"
+#include "Firebase.h"
 
 
-class OldPerson{
-    private:
-        String name;
+class Old{
     public:
-        int adress;
-        OldPerson(String input_name, int input_address);
-        void oldInit(String SSID, String Password,String key, String url);
-        String GetDrugs(String uid, bool signupOK);
+        bool signupOK = false;
+        String WIFI_SSID;
+        String WIFI_PASSWORD;
+        String API_KEY;
+        String DATABASE_URL;
+        FirebaseData fbdo;
+        FirebaseAuth auth;
+        FirebaseConfig config;
+        Old(String SSID, String Password,String key, String url);
+        void oldInit();
+        String GetDrugs(String uid);
 };
 
