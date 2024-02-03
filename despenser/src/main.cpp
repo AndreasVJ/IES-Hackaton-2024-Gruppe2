@@ -1,7 +1,7 @@
 #include <Arduino.h>
 #include "addons/TokenHelper.h"
 #include "addons/RTDBHelper.h"
-#include <FirebaseJson.h>
+#include "Firebase.h"
 
 
 // put function declarations here:
