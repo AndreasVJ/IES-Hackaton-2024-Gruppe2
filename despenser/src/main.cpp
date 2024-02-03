@@ -2,7 +2,7 @@
 #include "rfid_id.h"
 #include "addons/TokenHelper.h"
 #include "addons/RTDBHelper.h"
-#include <Adafruit_GFX.h>    // Core graphics library
+#include <Adafruit_GFX.h>   
 #include <Adafruit_ST7789.h> 
 #include "Old.h"
 
