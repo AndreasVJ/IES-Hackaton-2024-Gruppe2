@@ -5,7 +5,7 @@
 #include "addons/RTDBHelper.h"
 #include "WiFi.h"
 
-Old::Old(String SSID, String Password,String key, String url){
+Old::Old(String SSID, String Password,String key, String url) {
     String WIFI_SSID = SSID;
     String WIFI_PASSWORD = Password;
     String API_KEY = key;
@@ -49,21 +49,19 @@ void Old::oldInit(){
 }
 
 String Old::GetDrugs(String uid){
-  String path = uid;
-  path += "/String";
+  String documentPath = "test/" + uid;
   String numDrugs;
   String DrugAddr;
-if (Firebase.ready() && signupOK) {
-    if (Firebase.RTDB.getString(&fbdo, path)) {
-      if (fbdo.dataType() == "String") {
-        numDrugs = fbdo.intData();
-        Serial.println(numDrugs);
-        return numDrugs;
-      }
-    }
-    else {
-      Serial.println(fbdo.errorReason());
-    }
-}
+  if (Firebase.ready() && signupOK) {
+      FirebaseJson content;
+      String dataPath = "fields/time/integerValue";
+      content.set(dataPath, 123);
+
+      if (Firebase.Firestore.createDocument(&fbdo, "ies-hackaton-2024-gruppe2", "", documentPath.c_str(), content.raw()))
+        Serial.println("Data uploaded successfully");
+      else
+        Serial.println("Failed to upload data");
+  }
+  return "test";
 }
 
