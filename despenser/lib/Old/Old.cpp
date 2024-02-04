@@ -60,18 +60,18 @@ String Old::GetDrugs(String uid){
       	String mask = "medication";
       	StaticJsonDocument<512> doc;
       	if (Firebase.Firestore.getDocument(fbdo, "ies-hackaton-2024-gruppe2", "", documentPath.c_str(), mask.c_str())) {
-			deserializeJson(doc, fbdo->payload().c_str());
-  			Serial.print("Got dem drugs...\n");
+			      deserializeJson(doc, fbdo->payload().c_str());
+  			    Serial.print("Got dem drugs...\n");
 			
-			const char* drugString = doc["fields"]["medication"]["stringValue"];
-			return String(drugString);
-		}
-    	else {
-          	Serial.println(fbdo->errorReason());
-		}
+			      const char* drugString = doc["fields"]["medication"]["stringValue"];
+			      return String(drugString);
+        }
+        else {
+            Serial.println(fbdo->errorReason());
+        }
   	}
 
-	return "";
+    return "";
 }
 
 
