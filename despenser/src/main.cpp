@@ -5,7 +5,6 @@
 #include <Adafruit_GFX.h>   
 #include <Adafruit_ST7789.h> 
 #include "Old.h"
-#include "DrugServo.h"
 
 // #define TFT_MOSI 19
 // #define TFT_SCLK 18
@@ -28,7 +27,7 @@ void setup() {
   // put your setup code here, to run once:
   id_scanner = new RFID_ID_Scanner();
 
-  // drugfetcher = new Old("AndreasVJ iPhone", "12345679", "AIzaSyBMdIr9yelGR95c8WQnh93mpVvEY9NRrss");
+  drugfetcher = new Old("AndreasVJ iPhone", "12345679", "AIzaSyBMdIr9yelGR95c8WQnh93mpVvEY9NRrss");
 }
 
 void loop() {
@@ -42,9 +41,8 @@ void loop() {
 		if (drugString != "") {
 			Serial.print("Albert needs these drugs: ");
 			Serial.println(drugString);
-      ServoDispence("CA");
 		}
 	}
 
-  delay(500);
+  	delay(500);
 }

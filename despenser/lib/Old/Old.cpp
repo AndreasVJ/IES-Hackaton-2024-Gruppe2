@@ -49,6 +49,26 @@ Old::Old(String SSID, String Password, String key) {
     timeClient->begin();
 }
 
+
+void Old::updtateDatabase(String uid) {
+  timeClient.update();
+
+  unsigned long epochTime = timeClient.getEpochTime();
+  Serial.println(epochTime);
+
+  FirebaseJson content;
+  String documentPath = "users/" + uid;
+
+  String dataPath = "fields/time/integerValue";
+  content.set(dataPath, epochTime);
+
+  if (Firebase.Firestore.createDocument(&fbdo, "ies-hackaton-2024-gruppe2", "", documentPath.c_str(), content.raw()))
+    Serial.println("Data uploaded successfully");
+  else
+    Serial.println("Failed to upload data");
+}
+
+
 String Old::GetDrugs(String uid){
   	String documentPath = "users/";
   	documentPath += String(uid);

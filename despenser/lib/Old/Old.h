@@ -22,6 +22,7 @@ class Old{
         Old(String SSID, String Password,String key);
                 
         String GetDrugs(String uid);
+        void updtateDatabase(String uid)
 };
 
 
