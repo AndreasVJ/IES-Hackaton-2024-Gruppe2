@@ -28,7 +28,7 @@ void setup() {
   // put your setup code here, to run once:
   id_scanner = new RFID_ID_Scanner();
 
-  // drugfetcher = new Old("AndreasVJ iPhone", "12345679", "AIzaSyBMdIr9yelGR95c8WQnh93mpVvEY9NRrss");
+  drugfetcher = new Old("AndreasVJ iPhone", "12345679", "AIzaSyBMdIr9yelGR95c8WQnh93mpVvEY9NRrss");
 }
 
 void loop() {
@@ -45,6 +45,7 @@ void loop() {
       ServoDispence(drugString);
 		}
 	}
+  // ServoDispence("EA");
 
   delay(500);
 }

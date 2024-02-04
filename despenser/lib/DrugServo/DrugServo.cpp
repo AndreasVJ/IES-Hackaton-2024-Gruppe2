@@ -15,7 +15,7 @@ void ServoDispence(String drugs) {
     }
 
     int defaultDeg = 0;
-    int degPerMed = 45;
+    int degPerMed = 90;
     int med;
     int resolution = 15;
 
