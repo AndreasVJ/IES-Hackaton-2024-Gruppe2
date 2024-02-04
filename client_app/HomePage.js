@@ -1,6 +1,6 @@
 // HomePage.js
 import React, { useState, useEffect } from 'react'
-import { StyleSheet, View, Text, Image, Button } from 'react-native'
+import { StyleSheet, View, Text, Image, Pressable } from 'react-native'
 import { db } from "./firebaseConfig.js"
 import { getDoc, doc, onSnapshot } from "firebase/firestore"
 
@@ -64,7 +64,7 @@ const HomePage = ({ navigation }) => {
       { !showDispenserPageBtn
         ?
         <>
-          <Text style={styles.drugDropTimeText}>New drug drop in</Text>
+          <Text style={styles.drugDropTimeText}>Du kan hente ut medikamenter om</Text>
           <Text style={styles.drugDropTime}>{formattedTime(countDown)}</Text>
         </>
         :
@@ -72,12 +72,16 @@ const HomePage = ({ navigation }) => {
       }
       { showDispenserPageBtn
         ?
-        <Button
-          title="Hent ut medikamenter"
-          onPress={() => {
-            navigation.navigate('DispenserPage')
-          }}
-        />
+        <Pressable style={styles.getMedsBtn} onPress={() => {navigation.navigate('DispenserPage')}}>
+          <Text style={styles.getMedsBtnText}>Hent ut medikamenter</Text>
+        </Pressable>
+        // <Button
+        //   style={styles.getMedsBtn}
+        //   title="Hent ut medikamenter"
+        //   	onPress={() => {
+        //     navigation.navigate('DispenserPage')
+        //   }}
+        // />
         :
         <></>
       }
@@ -88,7 +92,7 @@ const HomePage = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   container: {
-    // backgroundColor: 'blue'
+    alignItems: 'center'
   },
 
   homeImage: {
@@ -109,6 +113,19 @@ const styles = StyleSheet.create({
   drugDropTime: {
     textAlign: 'center',
     fontSize: 30
+  },
+
+  getMedsBtn: {
+    backgroundColor: '#03a9fc',
+    alignItems: 'center',
+    width: 250,
+    borderRadius: 40,
+    padding: 20
+  },
+
+  getMedsBtnText: {
+    color: 'white',
+    fontSize: 20
   }
 })
 

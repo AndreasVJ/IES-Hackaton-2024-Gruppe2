@@ -1,18 +1,26 @@
 // Screen2.js
 import React, { useState } from 'react'
 import { StyleSheet, View, Text, Button, ActivityIndicator } from 'react-native'
+import AnimatedLoader from 'react-native-animated-loader';
 
 const DispenserPage = ({ navigation }) => {
   const [isLoading, setIsLoading] = useState(false)
 
-
   return (
     <View style={styles.container}>
       { isLoading ?
-        <>
-          <Text>Hold mobilen nær automaten</Text>
-          <ActivityIndicator size={"large"}/>
-        </>
+        <AnimatedLoader
+          visible={true}
+          overlayColor="rgba(255,255,255,1)"
+          source={require("./Animation.json")}
+          animationStyle={styles.lottie}
+          speed={1}>
+          <Text style={styles.infoText}>Hold mobilen nær automaten</Text>
+          {/* <Button 
+          title='Avbryt'
+          onPress={setIsLoading(false)}
+          /> */}
+        </AnimatedLoader>
         :
         <Button
           title="Activate dispenser"
@@ -31,6 +39,15 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center'
   },
+
+  lottie: {
+    width: 400,
+    height: 400,
+  },
+
+  infoText: {
+    fontSize: 20
+  }
 })
 
 
