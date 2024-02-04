@@ -15,7 +15,7 @@ void ServoDispence(String drugs) {
     }
 
     int defaultDeg = 0;
-    int degPerMed = 45;
+    int degPerMed = 90;
     int med;
     int resolution = 15;
 
@@ -27,19 +27,21 @@ void ServoDispence(String drugs) {
         s[i].write(defaultDeg);
         delay(1000);
 
-        for(int j = 0; j<(med*resolution); j++) {
-            s[i].write((degPerMed/resolution)*j);
-            delay(10);
-        }
-        delay(1000);
+        for(int k = 0; k<(med/2); k++) {
+            for(int j = 0; j<(med*resolution); j++) {
+                s[i].write((degPerMed/resolution)*j);
+                delay(10);
+            }
+            delay(1000);
 
-        for(int j = 0; j<(med*resolution); j++) {
-            s[i].write((degPerMed*med)-(degPerMed/resolution)*j);
-            delay(10);
-        }
+            for(int j = 0; j<(med*resolution); j++) {
+                s[i].write((degPerMed*med)-(degPerMed/resolution)*j);
+                delay(10);
+            }
 
-        s[i].write(defaultDeg);
-        delay(1000);
+            s[i].write(defaultDeg);
+            delay(1000);
+        }
     }
 }
 
