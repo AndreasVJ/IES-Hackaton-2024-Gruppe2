@@ -1,6 +1,6 @@
 // HomePage.js
 import React, { useState, useEffect } from 'react'
-import { StyleSheet, View, Text, Image, Pressable } from 'react-native'
+import { StyleSheet, View, Text, Image, Pressable, Button } from 'react-native'
 import { db } from "./firebaseConfig.js"
 import { getDoc, doc, onSnapshot } from "firebase/firestore"
 import AnimatedLoader from 'react-native-animated-loader'
@@ -35,7 +35,6 @@ const HomePage = ({ navigation }) => {
     const unsub = onSnapshot(doc(db, "users", "DA151F76"), (doc) =>{
       time = doc.data().time
       console.log("Current data: ", time)
-      setIsLoading(true)
     })
 
     const interval = setInterval(async () => {
@@ -43,6 +42,7 @@ const HomePage = ({ navigation }) => {
       if (timeLeft > 0) {
         setShowDispenserPageBtn(false)
         setCountDown(timeLeft)  
+        setIsLoading(false)
       }
       else {
         setShowDispenserPageBtn(true)
@@ -90,10 +90,6 @@ const HomePage = ({ navigation }) => {
           animationStyle={styles.lottie}
           speed={1}>
           <Text style={styles.infoText}>Hold mobilen nær automaten</Text>
-          {/* <Button 
-          title='Avbryt'
-          onPress={setIsLoading(false)}
-          /> */}
         </AnimatedLoader>
     </View>
   )
