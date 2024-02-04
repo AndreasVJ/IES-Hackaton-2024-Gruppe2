@@ -41,7 +41,8 @@ void loop() {
 		if (drugString != "") {
 			Serial.print("Albert needs these drugs: ");
 			Serial.println(drugString);
-      ServoDispence(drugString);
+      		ServoDispence(drugString);
+			drugfetcher->updtateDatabase(scanned_id);
 		}
 	}
   // ServoDispence("EA");
