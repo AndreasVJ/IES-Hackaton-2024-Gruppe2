@@ -1,7 +1,6 @@
-// Screen2.js
 import React, { useState } from 'react'
-import { StyleSheet, View, Text, Button, ActivityIndicator } from 'react-native'
-import AnimatedLoader from 'react-native-animated-loader';
+import { StyleSheet, View, Text, Button } from 'react-native'
+import AnimatedLoader from 'react-native-animated-loader'
 
 const DispenserPage = ({ navigation }) => {
   const [isLoading, setIsLoading] = useState(false)
