@@ -2,6 +2,7 @@
 #include "Arduino.h"
 #include "Firebase.h"
 #include "NTPClient.h"
+#include "ArduinoJson.h"
 #include "WiFi.h"
 
 class Old{

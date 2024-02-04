@@ -15,8 +15,10 @@
 
 // Adafruit_ST7789 tft = Adafruit_ST7789(TFT_CS, TFT_DC, TFT_MOSI, TFT_SCLK, TFT_RST);
 
-RFID_ID_Scanner* id_scanner;
 Old* drugfetcher;
+String lastScannerID = "";
+unsigned long lastFlush = 0;
+RFID_ID_Scanner* id_scanner;
 
 void setup() {
   Serial.begin(9600);
@@ -28,20 +30,19 @@ void setup() {
   drugfetcher = new Old("AndreasVJ iPhone", "12345679", "AIzaSyBMdIr9yelGR95c8WQnh93mpVvEY9NRrss");
 }
 
-bool hasWritten = false;
-
 void loop() {
-  // put your main code here, to run repeatedly:
-  String scanned_id = id_scanner->Scan();
-  if (scanned_id != "") {
-    Serial.println(scanned_id);
+  	// put your main code here, to run repeatedly:
+	String scanned_id = id_scanner->Scan();
+	if (scanned_id != "") {
+		Serial.println(scanned_id);
 
-    // Has scanned card
-    if (hasWritten == false) {
-      drugfetcher->GetDrugs(scanned_id);
-      hasWritten = true;
-    }
-  }
+		// Has scanned card
+		String drugString = drugfetcher->GetDrugs(scanned_id);
+		if (drugString != "") {
+			Serial.print("Albert needs these drugs: ");
+			Serial.println(drugString);
+		}
+	}
 
-  delay(500);
+  	delay(500);
 }
