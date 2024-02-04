@@ -2,7 +2,8 @@
 import React, { useState, useEffect } from 'react'
 import { StyleSheet, View, Text, Image, Button } from 'react-native'
 import { db } from "./firebaseConfig.js"
-import { getDoc, doc } from "firebase/firestore"
+import { getDoc, doc, onSnapshot } from "firebase/firestore"
+
 
 function formattedTime(milliseconds) {
   seconds = Math.floor(milliseconds/1000)
@@ -13,33 +14,46 @@ function formattedTime(milliseconds) {
   return (hours < 10 ? "0" : "") + String(hours) + ":" + (minutes < 10 ? "0" : "") + String(minutes) + ":" + (seconds < 10 ? "0" : "") + String(seconds)
 }
 
-
 const HomePage = ({ navigation }) => {
   const [countDown, setCountDown] = useState(0)
   const [showDispenserPageBtn, setShowDispenserPageBtn] = useState(0)
-  
+
   async function fetchTime() {
-    const docSnap = await getDoc(doc(db, "test", "DA151F76"))
+    const docSnap = await getDoc(doc(db, "users", "DA151F76"))
     if (docSnap.exists()) {
       const time = docSnap.data().time
       return time
     }
   }
   
-  useEffect(() => {
+  useEffect(async () => {
+    let time = await fetchTime()
+
+    const unsub = onSnapshot(doc(db, "users", "DA151F76"), (doc) =>{
+      time = doc.data().time
+      console.log("Current data: ", time)
+      navigation.navigate('HomePage')
+      console.log("Home")
+    })
+
     const interval = setInterval(async () => {
-      const time = await fetchTime()
       const timeLeft = time + 24*60*60*1000 - Date.now()
       if (timeLeft > 0) {
-        if (showDispenserPageBtn) {
+        // if (showDispenserPageBtn) {
           setShowDispenserPageBtn(false)
-        }
-        setCountDown(timeLeft)
+        // }
+        setCountDown(timeLeft)  
+      }
+      else {
+        // if (!showDispenserPageBtn) {
+          setShowDispenserPageBtn(true)
+        // }
       }
     }, 1000)
 
     return () => {
       clearInterval(interval)
+      unsub()
     }
   }, [])
 
@@ -63,7 +77,7 @@ const HomePage = ({ navigation }) => {
       { showDispenserPageBtn
         ?
         <Button
-          title="Go to DispenserPage"
+          title="Hent ut medikamenter"
           onPress={() => {
             navigation.navigate('DispenserPage')
           }}

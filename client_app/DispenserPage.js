@@ -14,10 +14,6 @@ const DispenserPage = ({ navigation }) => {
     <View>
       <Text>DispenserPage</Text>
       <Button
-        title="Go back HomePage"
-        onPress={() => navigation.navigate('HomePage')}
-      />
-      <Button
         title="Activate dispenser"
         onPress={() => console.log("dispensing")}
       />
