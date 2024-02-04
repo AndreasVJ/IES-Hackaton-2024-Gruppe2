@@ -39,15 +39,11 @@ const HomePage = ({ navigation }) => {
     const interval = setInterval(async () => {
       const timeLeft = time + 24*60*60*1000 - Date.now()
       if (timeLeft > 0) {
-        // if (showDispenserPageBtn) {
-          setShowDispenserPageBtn(false)
-        // }
+        setShowDispenserPageBtn(false)
         setCountDown(timeLeft)  
       }
       else {
-        // if (!showDispenserPageBtn) {
-          setShowDispenserPageBtn(true)
-        // }
+        setShowDispenserPageBtn(true)
       }
     }, 1000)
 
